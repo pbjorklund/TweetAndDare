@@ -3,13 +3,14 @@ class AuthenticationsController < ApplicationController
 		user = User.find_by_uid(env['omniauth.auth']['uid'])
 
 		if !user
-			user = User.create!(
-					:uid => env['omniauth.auth']['uid'],
-					:nickname => env['omniauth.auth']['info']['nickname'],
-					:oauth_token => env['omniauth.auth']['credentials']['token'], 
-					:oauth_token_secret => env['omniauth.auth']['credentials']['secret'])
+			user = User.create!(:uid => env['omniauth.auth']['uid'])
+			user.auth = Auth.new(
+				:nickname => env['omniauth.auth']['info']['nickname'],
+				:oauth_token => env['omniauth.auth']['credentials']['token'], 
+				:oauth_token_secret => env['omniauth.auth']['credentials']['secret']
+			)
+			user.save
 		end
-
 
 		if user
 			session[:uid] = user.uid
