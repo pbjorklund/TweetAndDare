@@ -20,6 +20,4 @@ ActiveRecord::Schema.define(:version => 20121013144137) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "nickname"
-  end
-
 end

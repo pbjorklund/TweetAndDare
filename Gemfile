@@ -10,6 +10,10 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'unicorn'
 
+gem 'haml-rails', '~> 0.3.4'
+gem 'simple_form', '~> 2.0.2'
+gem 'client_side_validations', '~> 3.1.4'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -27,8 +31,6 @@ gem 'jquery-rails'
 group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0.0'
-  gem 'capybara'
-  gem "capybara-webkit"
   gem 'fakeweb'
   gem "launchy"
 end
@@ -36,12 +38,15 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.11.0'
   gem 'guard-rspec', '~> 1.2.1'
-  
+  gem 'guard-cucumber'
   gem 'spork', '~> 1.0rc'
+
   gem "guard-spork", '~> 1.1.0'
-  
   gem "guard-bundler"
-  
+  gem 'capybara'
+  gem "capybara-webkit"
+  gem 'cucumber-rails', require: false
+
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'pry'
   # gem 'growl' # also install growlnotify from the Extras/growlnotify/growlnotify.pkg in Growl disk image
