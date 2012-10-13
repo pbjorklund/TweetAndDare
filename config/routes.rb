@@ -1,4 +1,16 @@
 RailsRumble::Application.routes.draw do
+
+  
+  resources :users
+
+  resources :authentications do
+    collection do
+      get "log_out"
+    end
+  end
+
+  match "/auth/twitter/callback" => "authentications#create"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

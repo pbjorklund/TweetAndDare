@@ -7,6 +7,7 @@ gem 'rvm-capistrano'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'twitter'
 gem 'unicorn'
 
 # Gems used only for assets and not required
