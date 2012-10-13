@@ -8,6 +8,8 @@ gem 'rvm-capistrano'
 gem 'unicorn'
 
 gem 'haml-rails', '~> 0.3.4'
+gem 'simple_form', '~> 2.0.2'
+gem 'client_side_validations', '~> 3.1.4'
 
 # Gems used only for assets and not required
 # in production environments by default.
