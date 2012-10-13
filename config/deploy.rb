@@ -1,5 +1,6 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
+require 'capistrano_colors'
 
 ssh_options[:forward_agent] = true
 
