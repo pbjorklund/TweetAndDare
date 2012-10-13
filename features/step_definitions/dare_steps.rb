@@ -7,7 +7,7 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
 end
 
 When /^I submit the form$/ do
-  click_on 'Dare!'
+  click_on 'Dare'
 end
 
 Then /^I should see the dare page$/ do
