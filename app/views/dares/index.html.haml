@@ -8,7 +8,7 @@
           %span= "to"
         .row
           = f.fields_for :daree do |daree_field|
-            = daree_field.text_field :nickname, style: 'width: 100%;'
+            = daree_field.text_field :nickname, style: 'width: 100%;', placeholder: 'come up with a better placeholder'
         .row
           .form-actions
             = f.submit 'Dare'
