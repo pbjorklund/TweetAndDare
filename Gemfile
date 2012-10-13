@@ -30,7 +30,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'sass'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'bootstrap-sass', '~> 2.1.0.0' # Needs to be outside Asset Scope
 
