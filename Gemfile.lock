@@ -236,7 +236,7 @@ DEPENDENCIES
   pg
   pry
   rails (= 3.2.5)
-  rb-fsevent
+  rb-fsevent (~> 0.9.1)
   rspec-rails (~> 2.11.0)
   rvm-capistrano
   sass-rails (~> 3.2.3)

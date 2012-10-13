@@ -39,7 +39,7 @@ group :development, :test do
   
   gem "guard-bundler"
   
-  gem 'rb-fsevent'
+  gem 'rb-fsevent', '~> 0.9.1'
   gem 'pry'
   # gem 'growl' # also install growlnotify from the Extras/growlnotify/growlnotify.pkg in Growl disk image
 end
