@@ -33,16 +33,14 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.11.0'
   gem 'guard-rspec', '~> 1.2.1'
-  
   gem 'spork', '~> 1.0rc'
+
   gem "guard-spork", '~> 1.1.0'
-  
   gem "guard-bundler"
-  
   gem 'capybara'
   gem "capybara-webkit"
-  gem 'turnip'
-  
+  gem 'cucumber-rails', require: false
+
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'pry'
   # gem 'growl' # also install growlnotify from the Extras/growlnotify/growlnotify.pkg in Growl disk image
