@@ -16,6 +16,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: dare_development
+  host: localhost
   pool: 5
   username: dare
   password:
@@ -42,6 +43,7 @@ test: &test
   adapter: postgresql
   encoding: unicode
   database: dare_test
+  host: localhost
   pool: 5
   username: dare
   password:
