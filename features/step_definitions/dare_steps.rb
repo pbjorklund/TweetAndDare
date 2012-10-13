@@ -2,6 +2,14 @@ Given /^I am on the startpage$/ do
   visit "/"
 end
 
-When /^I fill in "(.*?)" with "(.*?)"$/ do |arg1, arg2|
-    pending # express the regexp above with the code you wish you had
+When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
+  fill_in field, with: value
+end
+
+When /^I submit the form$/ do
+  click_on 'Dare!'
+end
+
+Then /^I should see the dare page$/ do
+  page.should have_content('run stockholm marathon')
 end

@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(:version => 20121013162351) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "dares", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "text"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "uid"
     t.datetime "created_at", :null => false
