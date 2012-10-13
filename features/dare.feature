@@ -4,5 +4,7 @@ Feature: Daring people
 
   Scenario: Adding a dare
     Given I am on the startpage
-    When I fill in "daree" with "@zeeraw"
-    And I fill in "dare" with "run the marathon"
+    When I fill in "dare_daree_nickname" with "@zeeraw"
+    And I fill in "dare_text" with "run stockholm marathon"
+    And I submit the form
+    Then I should see the dare page

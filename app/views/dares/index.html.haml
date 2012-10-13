@@ -1,0 +1,6 @@
+= simple_form_for @dare, url: dares_path, method: :post do |f|
+  = f.input :text
+  = f.fields_for :daree do |daree_field|
+    = daree_field.input :nickname
+
+  = f.submit 'Dare!'
