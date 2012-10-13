@@ -33,6 +33,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.11.0'
   gem 'guard-rspec', '~> 1.2.1'
+  gem 'guard-cucumber'
   gem 'spork', '~> 1.0rc'
 
   gem "guard-spork", '~> 1.1.0'
