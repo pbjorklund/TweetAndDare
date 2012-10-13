@@ -5,8 +5,6 @@ RailsRumble::Application.routes.draw do
 
   resources :dares, only: [:index,:create,:show]
 
-  resources :users
-
   resources :authentications do
     collection do
       get "log_out"

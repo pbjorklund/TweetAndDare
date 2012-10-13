@@ -55,6 +55,7 @@ group :development, :test do
 
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'pry'
+  gem 'pry-nav'
   # gem 'growl' # also install growlnotify from the Extras/growlnotify/growlnotify.pkg in Growl disk image
 end
 
