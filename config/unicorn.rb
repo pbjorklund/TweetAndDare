@@ -22,11 +22,11 @@ pid "/tmp/unicorn.my_site.pid"
 if env == "production"
   # Help ensure your application will always spawn in the symlinked
   # "current" directory that Capistrano sets up.
-  working_directory "/home/deployer/apps/my_site/current"
+  working_directory "/home/deploy/r12-team-176/current"
 
   # feel free to point this anywhere accessible on the filesystem
-  user 'deployer', 'staff'
-  shared_path = "/home/deployer/apps/my_site/shared"
+  user 'deploy', 'staff'
+  shared_path = "/home/deploy/r12-team-176/shared"
 
   stderr_path "#{shared_path}/log/unicorn.stderr.log"
   stdout_path "#{shared_path}/log/unicorn.stdout.log"
