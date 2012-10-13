@@ -16,11 +16,11 @@ class Dare < ActiveRecord::Base
   # Returns a string less than 140 characters long
   def as_tweet
     tweet ||= ""
-    tweet << "I #dare "
+    tweet.concat "I #dare "
     tweet.concat dared_user.present? ? "@" + dared_user.nickname : "#anyone"
-    tweet << " to "
-    tweet << text[0..((118 - tweet.length) - 1)]
-    tweet << " http://some.url.com/dares/12345"
+    tweet.concat " to "
+    tweet.concat text[0..((118 - tweet.length) - 1)]
+    tweet.concat " http://some.url.com/dares/12345"
   end
 
 end
