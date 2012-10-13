@@ -23,25 +23,27 @@ gem 'jquery-rails'
 
 group :test do
   gem 'database_cleaner'
-  gem 'rspec-rails'
-  gem 'cucumber-rails', :require => false
-  gem "factory_girl_rails"
+  gem 'factory_girl_rails', '~> 4.0.0'
   gem 'capybara'
   gem "capybara-webkit"
   gem 'fakeweb'
   gem "launchy"
-  gem 'database_cleaner', :group => :test
 end
 
 group :development, :test do
-  gem "guard"
-  gem "guard-rspec"
-  gem "guard-cucumber"
+  gem 'rspec-rails', '~> 2.11.0'
+  gem 'guard-rspec', '~> 1.2.1'
+  
+  gem 'spork', '~> 1.0rc'
+  gem "guard-spork", '~> 1.1.0'
+  
   gem "guard-bundler"
-  gem "guard-spork"
-  gem 'spork'
-  gem 'rb-fsevent'
+  
+  gem 'rb-fsevent', '~> 0.9.1'
   gem 'pry'
-  gem 'growl' # also install growlnotify from the Extras/growlnotify/growlnotify.pkg in Growl disk image
-  gem 'unicorn'
+  # gem 'growl' # also install growlnotify from the Extras/growlnotify/growlnotify.pkg in Growl disk image
+end
+
+group :development do
+  gem 'foreman'
 end
