@@ -22,7 +22,7 @@ set :normalize_asset_timestamps,    false
 
 set :deploy_to,                     "/home/#{user}/#{application}"
 
-server "50.56.173.25", :web, :app, :db, primary: true
+server "72.14.190.56", :web, :app, :db, primary: true
 
 default_environment["RAILS_ENV"] = 'production'
 
