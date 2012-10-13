@@ -1,6 +1,14 @@
-= simple_form_for @dare, url: dares_path, method: :post do |f|
-  = f.input :text
-  = f.fields_for :daree do |daree_field|
-    = daree_field.input :nickname
-
-  = f.submit 'Dare!'
+.row
+  .span8.offset2
+    %center
+      = form_for @dare, url: dares_path, method: :post do |f|
+        .row
+          %span= "I dare"
+          = f.text_field :text, label: false, placeholder: '@twitter_handle', style: 'width: 300px;'
+          %span= "to"
+        .row
+          = f.fields_for :daree do |daree_field|
+            = daree_field.text_field :nickname, style: 'width: 100%;'
+        .row
+          .form-actions
+            = f.submit 'Dare'

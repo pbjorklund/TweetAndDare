@@ -1,3 +1,42 @@
 form#new_dare
-  font-size: 10px
+  padding: 60px 0
+  input[type=text], span
+    display: inline-block
+    font-size: 28px
+    line-height: 28px
+    height: 28px
+    +box-shadow(0,0,0,.0)
+    font-family: 'Architects Daughter', cursive
+  input[type=text]
+    text-align: center
+    border: 0
+    border-bottom: 1px dashed rgba(0,0,0,.3)
+    padding: 15px 0
+    box-sizing: content-box
 
+  input[type=submit]
+    padding: 15px
+    width: 340px
+
+    +border-radius(5px)
+    border: 1px solid #e6e6e6
+    border-bottom-width: 3px
+
+    background: lighten(#e6e6e6,8%)
+
+    color: #555
+    font-size: 20px
+    font-family: 'Architects Daughter', cursive
+    text-shadow: 1px 1px 0 rgba(255,255,255,.8)
+
+    +transition(background .3s ease-in-out)
+
+    &:focus, &:active
+      margin-top: 1px
+      border-bottom-width: 2px
+    &:hover
+      background: lighten(#e6e6e6,6%)
+
+.form-actions
+  background: 0
+  border: 0
