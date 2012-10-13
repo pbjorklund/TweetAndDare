@@ -5,10 +5,9 @@ class Dare < ActiveRecord::Base
   belongs_to :owner
   belongs_to :dared_user
 
-  def daree(args)
-  end
+  validates :text, presence: true
 
   def daree=(args)
+    User.create!(nickname: args["nickname"])
   end
-
 end

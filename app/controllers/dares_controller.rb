@@ -8,7 +8,7 @@ class DaresController < ApplicationController
   end
 
   def create
-    @dare = Dare.create params[:dare]
+    @dare = Dare.create! params[:dare]
     render :show
   end
 

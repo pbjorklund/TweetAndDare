@@ -3,10 +3,20 @@
 require 'spec_helper'
 
 describe Dare do
+  before(:each) do
+    User.destroy_all
+  end
 
-  let(:dare) { Dare.build(:dare) }
+  let(:dare) { FactoryGirl.create(:dare) }
 
-  it "works" do
+  it "requires a text" do
+    dare.text = ""
+    dare.should be_invalid
+  end
+
+  it "requires a text" do
+    dare.text = ""
+    dare.should be_invalid
   end
 
 end

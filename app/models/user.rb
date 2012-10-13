@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :owning_dares, :class_name => "Dare", :foreign_key => :owner_id
   has_many :received_dares, :class_name => "Dare", :foreign_key => :dared_user_id
 
+  validates :nickname, uniqueness: true
+
   def self.create_from_omniauth omniauth
     unless find_by_uid(omniauth.uid)
       user = self.create!( uid: omniauth.uid, nickname: omniauth.info.nickname)
