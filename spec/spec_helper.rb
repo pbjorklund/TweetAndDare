@@ -15,11 +15,14 @@ require 'rspec/autorun'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+# Dir[Rails.root.join("spec/acceptance/steps/**/*steps.rb")].each {|f| require f}
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
+
+  require 'turnip/capybara'
   
   DatabaseCleaner.strategy = :truncation
   
@@ -93,6 +96,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  
+  
+  # Steps inclusions
+  # config.include DareSteps
   
   config.include FactoryGirl::Syntax::Methods
   

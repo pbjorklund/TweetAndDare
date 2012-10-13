@@ -26,8 +26,6 @@ gem 'jquery-rails'
 group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0.0'
-  gem 'capybara'
-  gem "capybara-webkit"
   gem 'fakeweb'
   gem "launchy"
 end
@@ -40,6 +38,10 @@ group :development, :test do
   gem "guard-spork", '~> 1.1.0'
   
   gem "guard-bundler"
+  
+  gem 'capybara'
+  gem "capybara-webkit"
+  gem 'turnip'
   
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'pry'
