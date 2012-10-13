@@ -10,7 +10,6 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'unicorn'
 
-gem 'haml'
 gem 'haml-rails', '~> 0.3.4'
 gem 'simple_form', '~> 2.0.2'
 gem 'client_side_validations', '~> 3.1.4'
@@ -30,7 +29,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'sass'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'bootstrap-sass', '~> 2.1.0.0' # Needs to be outside Asset Scope
 

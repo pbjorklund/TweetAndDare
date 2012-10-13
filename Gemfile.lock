@@ -267,7 +267,6 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec (~> 1.2.1)
   guard-spork (~> 1.1.0)
-  haml
   haml-rails (~> 0.3.4)
   jquery-rails
   launchy
@@ -279,7 +278,6 @@ DEPENDENCIES
   rb-fsevent (~> 0.9.1)
   rspec-rails (~> 2.11.0)
   rvm-capistrano
-  sass
   sass-rails (~> 3.2.3)
   simple_form (~> 2.0.2)
   spork (~> 1.0rc)
