@@ -1,10 +1,8 @@
 RailsRumble::Application.routes.draw do
+<<<<<<< HEAD
+=======
 
-
-  root to: 'dares#index'
-
-  resources :dares, only: [:index,:create,:show]
-
+  
   resources :users
 
   resources :authentications do
@@ -14,8 +12,13 @@ RailsRumble::Application.routes.draw do
   end
 
   match "/auth/twitter/callback" => "authentications#create"
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
+>>>>>>> 3d202171fa62db561a11b782e13de955b2d3c45e
+
+  root to: 'dares#index'
+
+  resources :dares, only: [:index,:create,:show]
 
 end

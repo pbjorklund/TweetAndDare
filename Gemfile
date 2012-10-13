@@ -5,6 +5,9 @@ gem 'pg'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter'
 gem 'unicorn'
 
 gem 'haml-rails', '~> 0.3.4'
