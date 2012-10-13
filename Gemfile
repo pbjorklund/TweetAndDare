@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.6'
+
 gem 'pg'
 gem 'capistrano'
 gem 'capistrano_colors', :require => nil
