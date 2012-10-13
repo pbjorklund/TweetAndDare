@@ -259,6 +259,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
+  execjs
   factory_girl_rails (~> 4.0.0)
   fakeweb
   foreman
