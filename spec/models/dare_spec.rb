@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Dare do
 
-  let(:dare) { Dare.new }
+  let(:dare) { Dare.build(:dare) }
 
   it "works" do
   end
