@@ -272,8 +272,8 @@ DEPENDENCIES
   haml-rails (~> 0.3.4)
   jquery-rails
   launchy
-  omniauth
-  omniauth-twitter
+  omniauth (~> 1.1.0)
+  omniauth-twitter (~> 0.0.12)
   pg
   pry
   rails (= 3.2.5)

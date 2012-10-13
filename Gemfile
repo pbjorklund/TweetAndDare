@@ -6,8 +6,8 @@ gem 'capistrano'
 gem 'capistrano_colors', :require => nil
 gem 'rvm-capistrano'
 
-gem 'omniauth'
-gem 'omniauth-twitter'
+gem 'omniauth', '~> 1.1.0'
+gem 'omniauth-twitter', '~> 0.0.12'
 gem 'twitter'
 gem 'unicorn'
 
