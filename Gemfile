@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.5'
 gem 'pg'
 gem 'capistrano'
+gem 'capistrano_colors', :require => nil
 gem 'rvm-capistrano'
 
 gem 'omniauth'
