@@ -7,10 +7,9 @@ gem 'capistrano'
 gem 'capistrano_colors', :require => nil
 gem 'rvm-capistrano'
 
-gem 'omniauth', '~> 1.1.0'
-gem 'omniauth-twitter', '~> 0.0.12'
+gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter.git'
+
 gem 'twitter'
-gem 'unicorn'
 
 gem 'haml-rails', '~> 0.3.4'
 gem 'simple_form', '~> 2.0.2'
@@ -62,3 +61,6 @@ end
 group :development do
   gem 'foreman'
 end
+
+gem 'unicorn'
+
