@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :oauth_token, :oauth_token_secret, :uid, :nickname
+  attr_accessible :uid
+
+  has_one :auth
 
   def twitter
   	Twitter::Client.new(

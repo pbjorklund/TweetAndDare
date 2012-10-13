@@ -1,16 +1,10 @@
-
 class DaresController < ApplicationController
-
   def index
-
     @dare = Dare.new
-
   end
 
   def show
-
     @dare = fetch_dare
-
   end
 
   def create
@@ -23,5 +17,4 @@ class DaresController < ApplicationController
   def fetch_dare
     Dare.find params[:id]
   end
-
 end
