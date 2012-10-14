@@ -11,6 +11,8 @@ class Dare < ActiveRecord::Base
   validates :target, format: { with: /^(@|#)[a-z1-9\_]{1,21}/i, message: "Only @mentions and #hashtags allowed" }
   validates :target, presence: { message: "Can't be blank. Dare a friend!" }
 
+  acts_as_votable
+
   STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
 
   # Public: Customized target setter
@@ -36,5 +38,4 @@ class Dare < ActiveRecord::Base
     tweet.concat text[0..((118 - tweet.length) - 1)]
     tweet.concat " http://tweetanddare.com/dares/#{id}"
   end
-
 end

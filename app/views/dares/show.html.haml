@@ -14,14 +14,21 @@
     = @dare.text
 .row
   .span12
-    %h2
-      Current state
-      %br
-      - Dare::STATES.keys[1..-1].each do |k|
-        - if @dare.state == Dare::STATES[k]
-          = pretty_state(Dare::STATES[k], true)
-        - else
-          = pretty_state(Dare::STATES[k])
+    - if current_user
+      =link_to dont_path(id: @dare.id), remote: true, class: "dont-count btn btn-large btn-danger" do
+        Don't
+        = @dare.dislikes.size
+      =link_to do_path(id: @dare.id), remote: true, class: "do-count btn btn-large btn-success" do
+        Do
+        = @dare.likes.size
+      %h2
+        Current state
+        %br
+        - Dare::STATES.keys[1..-1].each do |k|
+          - if @dare.state == Dare::STATES[k]
+            = pretty_state(Dare::STATES[k], true)
+          - else
+            = pretty_state(Dare::STATES[k])
 .row
   .span12
     - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
