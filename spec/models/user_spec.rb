@@ -9,6 +9,7 @@ describe User do
 
     info = OpenStruct.new
     info.nickname = "pbjorklund"
+    info.image = "https://twimg0-a.akamaihd.net/profile_images/2243520267/Zeeraw.png"
 
     cred = OpenStruct.new
     cred.token = "token"
@@ -48,5 +49,20 @@ describe User do
       Auth.stub(:new).and_return(nil)
       expect { User.create_or_find_from_omniauth omniauth }.to change{User.count}.by(1)
     end
+
+    it "updates changed credentials" do
+      # TODO:
+      # expect omniauth attributes to change when tokens have changed
+    end
   end
+
+  describe "#twitter" do
+    it "does not raise any errors" do
+      expect { user.twitter }.to_not raise_error
+    end
+    it "returns an instance of the Twitter connector based on the users oAuth credentials" do
+      user.twitter.should be_a(Twitter::Client)
+    end
+  end
+
 end

@@ -13,14 +13,15 @@ class DaresController < ApplicationController
     @dare.save!
 
     if current_user && current_user.oauth_hash
-      tweet_dare current_user.oauth_hash, @dare.as_tweet
+      tweet_dare current_user, @dare.as_tweet
     end
 
     render :show
   end
 
   private
-  def tweet_dare oauth_hash, tweet
+  def tweet_dare user, tweet
+    client = user.twitter_client
     client = Twitter::Client.new(oauth_hash)
     Thread.new { client.update(tweet) }
   end

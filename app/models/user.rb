@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :uid, :nickname
+  attr_accessible :uid, :nickname, :image
 
   has_one :auth
   has_many :owning_dares, :class_name => "Dare", :foreign_key => :owner_id
@@ -10,9 +10,12 @@ class User < ActiveRecord::Base
   def self.create_or_find_from_omniauth omniauth
     user = find_by_uid(omniauth.uid)
     unless  user
-      user = self.create!( uid: omniauth.uid, nickname: omniauth.info.nickname)
+      user = self.create!( uid: omniauth.uid, nickname: omniauth.info.nickname, image: omniauth.info.image)
       user.auth = Auth.new( oauth_token: omniauth.credentials.token, oauth_token_secret: omniauth.credentials.secret)
       user.save!
+    else # try to update tokens
+      user.auth.update_attributes(oauth_token: omniauth.credentials.token, oauth_token_secret: omniauth.credentials.secret)
+      user.save
     end
     user
   end
@@ -29,5 +32,12 @@ class User < ActiveRecord::Base
     unless auth.nil?
       Hash[:oauth_token, auth.oauth_token, :oauth_token_secret, auth.oauth_token_secret]
     end
+  end
+  # Public: Connets to twitter using their client
+  # based on the users oAuth credentials.
+  #
+  # Returns a Twitter Client instance.
+  def twitter_client
+    Twitter::Client.new(oauth_hash)
   end
 end

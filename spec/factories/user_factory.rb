@@ -12,16 +12,8 @@ FactoryGirl.define do
 
   factory :user do
     uid         { FactoryGirl.generate(:id) }
-    nickname   { FactoryGirl.generate(:nickname) }
-    association :auth, oauth_token_secret: FactoryGirl.generate(:oauth_secret), oauth_token: FactoryGirl.generate(:oauth_token)
-  end
-
-  factory :pbjorklund, :class => User do
-    id         19505451
-    name       "Patrik Bjorklund"
-    bio        "Rocking and rolling"
-    image_url  "http//www.twitter.com/image.jpg"
-    nickname   "pbjorklund"
+    nickname    { FactoryGirl.generate(:nickname) }
+    image       "https://twimg0-a.akamaihd.net/profile_images/2243520267/Zeeraw.png"
     association :auth, oauth_token_secret: FactoryGirl.generate(:oauth_secret), oauth_token: FactoryGirl.generate(:oauth_token)
   end
 end
