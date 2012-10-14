@@ -13,3 +13,6 @@ end
 Then /^I should see the dare page$/ do
   page.should have_content('run stockholm marathon')
 end
+
+Then /^I should get redirected to the twitter authentication$/ do
+end
