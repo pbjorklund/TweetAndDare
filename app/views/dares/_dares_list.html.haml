@@ -1,0 +1,15 @@
+%ul.unstyled
+  - dares.reverse.each do |dare|
+    %li.clearfix{ style: 'margin-bottom: 5px;' }
+      .pull-left{ style: 'margin-right: 5px' }
+        - if dare.owner.image
+          = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
+      .pull-right
+        = link_to dare, class: 'btn btn-small' do
+          %strong= "View"
+          %i.icon-chevron-right
+      = twitter_link dare.owner.nickname
+      dared
+      = twitter_link dare.target
+      to
+      = dare.text

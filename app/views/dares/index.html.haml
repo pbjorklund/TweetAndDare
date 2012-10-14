@@ -20,20 +20,12 @@
           .form-actions
             = f.submit 'Dare'
 
-        .row
-          - unless @recent_dares.empty?
-            %h1 Recent dares
-            %table
-              %tbody
-                - @recent_dares.reverse.each do |dare|
-                  %tr
-                    %td
-                      - if dare.owner.image
-                        = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
-                      = twitter_link dare.owner.nickname
-                      dared
-                      = twitter_link dare.target
-                      to
-                      = dare.text
-                    %td
-                      =link_to "<- View", dare
+.row
+  .span6
+    - unless @recent_dares.empty?
+      %h2= "Recent dares"
+      = render partial: 'dares_list', locals: { dares: @recent_dares }
+  / .span6
+  /   - unless @popular_dares.empty?
+  /     %h2= "Popular dares"
+  /     = render partial: 'dares_list', locals: { dares: @popular_dares }
