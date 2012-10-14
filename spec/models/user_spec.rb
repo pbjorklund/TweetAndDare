@@ -9,6 +9,7 @@ describe User do
 
     info = OpenStruct.new
     info.nickname = "pbjorklund"
+    info.image = "https://twimg0-a.akamaihd.net/profile_images/2243520267/Zeeraw.png"
 
     cred = OpenStruct.new
     cred.token = "token"
@@ -37,4 +38,5 @@ describe User do
       # expect omniauth attributes to change when tokens have changed
     end
   end
+
 end
