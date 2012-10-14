@@ -14,17 +14,12 @@ describe DaresController do
 
     describe '#create' do
       it 'creates dares' do
-        post 'create', { dare: FactoryGirl.attributes_for(:dare) }
+        post 'create', dare: FactoryGirl.attributes_for(:dare_params)
         response.should be_successful
       end
-
     end
 
     describe '#show' do
-
-      before(:each) do
-      end
-
       it 'is accessible' do
         d = FactoryGirl.create(:dare)
         get 'show', { id: d.id }

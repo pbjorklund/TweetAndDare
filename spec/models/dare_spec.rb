@@ -14,11 +14,6 @@ describe Dare do
     dare.should be_invalid
   end
 
-  it "requires a text" do
-    dare.text = ""
-    dare.should be_invalid
-  end
-
   describe "#as_tweet" do
     it { dare.as_tweet.should be_a(String) }
     it { dare.as_tweet.should eq('I #dare #anyone to run Stockholm marathon http://some.url.com/dares/12345') }
