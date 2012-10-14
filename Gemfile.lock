@@ -59,7 +59,10 @@ GEM
       json
     childprocess (0.3.2)
       ffi (~> 1.0.6)
-    client_side_validations (3.1.5)
+    client_side_validations (3.2.0)
+    client_side_validations-simple_form (2.0.0)
+      client_side_validations (~> 3.2.0)
+      simple_form (~> 2.0.3)
     coderay (1.0.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -265,7 +268,8 @@ DEPENDENCIES
   capistrano_colors
   capybara
   capybara-webkit
-  client_side_validations (~> 3.1.4)
+  client_side_validations (~> 3.2)
+  client_side_validations-simple_form
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
