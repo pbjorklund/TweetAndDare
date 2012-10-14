@@ -8,7 +8,8 @@ class Dare < ActiveRecord::Base
   belongs_to :dared_user, class_name: 'User'
 
   validates :text, presence: true
-  validates :target, format: { with: /^(\@|\#)?[a-z1-9\_]{1,21}/i }, if: :target?
+  validates :target, format: { with: /^(@|#)[a-z1-9\_]{1,21}/i, message: "Only @mentions and #hashtags allowed" }
+  validates :target, presence: true
 
   STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
 

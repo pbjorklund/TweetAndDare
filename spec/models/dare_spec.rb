@@ -16,8 +16,8 @@ describe Dare do
 
   describe "#target" do
     it "must start with a @ handle or # tag" do
-      build(:dare, target: nil).should be_valid
-      build(:dare, target: 'invalid').should_not be_valid
+      build(:dare, target: nil).should be_invalid
+      build(:dare, target: 'invalid').should be_invalid
       build(:dare, target: '@handle').should be_valid
       build(:dare, target: '#tag').should be_valid
     end
