@@ -16,4 +16,18 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def self.find_or_create! nickname
+    user = User.find_by_nickname nickname
+    unless user
+      user = User.create({nickname: nickname })
+    end
+    user
+  end
+
+  def oauth_hash
+    unless auth.nil?
+      Hash[:oauth_token, auth.oauth_token, :oauth_token_secret, auth.oauth_token_secret]
+    end
+  end
 end

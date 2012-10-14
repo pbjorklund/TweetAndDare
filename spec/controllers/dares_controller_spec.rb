@@ -14,6 +14,7 @@ describe DaresController do
 
     describe '#create' do
       it 'creates dares' do
+        Twitter::Client.stub(:update).and_return(:true)
         post 'create', dare: FactoryGirl.attributes_for(:dare_params)
         response.should be_successful
       end

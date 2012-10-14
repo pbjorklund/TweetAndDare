@@ -26,6 +26,23 @@ describe User do
     end.should raise_error
   end
 
+  it "can fetch a #oauth_hash" do
+    hash = user.oauth_hash
+    hash[:oauth_token].should == 1
+    hash[:oauth_token_secret].should == 1
+    hash[:non].should be_nil
+  end
+
+  describe "#find_or_create" do
+    it "creates a user if the nickname has not been used before" do
+      expect { User.find_or_create!("find_or_create_test_user") }.to change{User.count}.by(1)
+    end
+
+    it "finds the user if the nickname has been used before" do
+      expect { User.find_or_create!("find_or_create_test_user") }.to change{User.count}.by(0)
+    end
+  end
+
   describe "#self.create_or_find_from_omniauth" do
     it "creates or finds a user given a valid auth" do
       Auth.stub(:new).and_return(nil)
