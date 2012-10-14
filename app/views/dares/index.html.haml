@@ -6,7 +6,7 @@
           %span I dare&nbsp;
           %span
             = f.fields_for :dared_user do |dared_user_field|
-              = dared_user_field.text_field :nickname, style: 'width: 400px;', placeholder: '@twitter_handle'
+              = dared_user_field.text_field :nickname, style: 'width: 400px;', placeholder: '@nickname'
             .field-decoration
           %br
           %br
@@ -15,7 +15,7 @@
           %br
           %br
           %span
-            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'come up with a better placeholder'
+            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'do something . . .'
             .field-decoration
         .row
           .form-actions
