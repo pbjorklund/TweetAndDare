@@ -10,3 +10,5 @@ OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
 Before('@logged_in') do
   visit "/auth/twitter"
 end
+
+[User, Auth, Dare].map(&:delete_all)
