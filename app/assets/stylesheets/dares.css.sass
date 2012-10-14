@@ -1,5 +1,38 @@
 form#new_dare
-  padding: 160px 0
+  padding: 70px 0 30px 0
+  margin: 20px auto 20px auto
+  position: relative
+  position: relative
+  background-color: #fff
+  @each $vendor in -webkit-, -moz-, ""
+    #{$vendor}box-shadow: 0 0 4px rgba(0, 0, 0, .2), inset 0 0 100px rgba(0, 0, 0, .03)
+
+  &:before, &:after
+    position: absolute
+    width: 40%
+    height: 10px
+    content: ' '
+    left: 12px
+    bottom: 12px
+    background: transparent
+
+    @each $vendor in -webkit-, -moz-, -ms-, -o-, ""
+      #{$vendor}transform: skew(-5deg) rotate(-5deg)
+    @each $vendor in -webkit-, -moz-, ""
+      #{$vendor}box-shadow: 0 6px 12px rgba(0, 0, 0, .2)
+
+    z-index: -1
+
+  &:after
+    @each $vendor in -webkit-, -moz-, -ms-, -o-, ""
+      #{$vendor}transform: skew(5deg) rotate(5deg)
+    @each $vendor in -webkit-, -moz-, ""
+      #{$vendor}box-shadow: 0 6px 12px rgba(0, 0, 0, .2)
+
+    z-index: -1
+    left: auto
+    right: 12px
+
   input[type=text], span
     display: inline-block
     font-size: 30px
