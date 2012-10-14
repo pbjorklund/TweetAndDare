@@ -1,39 +1,30 @@
 .row
   .span8.offset2
     %center
-      = form_for @dare, url: dares_path, method: :post do |f|
+      = form_for @dare, url: dares_path, method: :post, :validate => true do |f|
         .row
           %span I dare&nbsp;
           %span
-            = f.text_field :target, style: 'width: 340px;', placeholder: '@nickname/#hashtag'
             .field-decoration
+            = f.text_field :target, style: 'width: 340px;', placeholder: '@nickname/#hashtag'
           %br
           %br
         .row
           %span= "to"
           %br
-          %br
           %span
-            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'do something awesome . . .'
             .field-decoration
+            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'do something awesome . . .'
         .row
           .form-actions
             = f.submit 'Dare'
 
-        .row
-          - unless @recent_dares.empty?
-            %h1 Recent dares
-            %table
-              %tbody
-                - @recent_dares.reverse.each do |dare|
-                  %tr
-                    %td
-                      - if dare.owner.image
-                        = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
-                      = twitter_link dare.owner.nickname
-                      dared
-                      = twitter_link dare.target
-                      to
-                      = dare.text
-                    %td
-                      =link_to "<- View", dare
+.row
+  .span6
+    - unless @recent_dares.empty?
+      %h2= "Recent dares"
+      = render partial: 'dares_list', locals: { dares: @recent_dares }
+  / .span6
+  /   - unless @popular_dares.empty?
+  /     %h2= "Popular dares"
+  /     = render partial: 'dares_list', locals: { dares: @popular_dares }

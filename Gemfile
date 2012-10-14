@@ -13,7 +13,8 @@ gem 'twitter'
 
 gem 'haml-rails', '~> 0.3.4'
 gem 'simple_form', '~> 2.0.2'
-gem 'client_side_validations', '~> 3.1.4'
+gem 'client_side_validations', '~> 3.2'
+gem 'client_side_validations-simple_form'
 gem 'google-analytics-rails'
 
 # Gems used only for assets and not required

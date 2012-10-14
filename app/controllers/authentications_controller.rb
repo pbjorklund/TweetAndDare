@@ -13,12 +13,8 @@ class AuthenticationsController < ApplicationController
 
   end
 
-  def log_out
-    session[:uid] = nil
-    redirect_to :root
-  end
-
   private
+
   def omniauth
     @omniauth ||= env['omniauth.auth']
   end
