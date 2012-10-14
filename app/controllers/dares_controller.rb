@@ -17,9 +17,20 @@ class DaresController < ApplicationController
     end
   end
 
-  private
+  def update
+    @dare = Dare.find(params[:id])
+    @dare.state = params[:dare][:state]
 
-  def fetch_dare
-    Dare.find params[:id]
+    if @dare.save
+      flash[:success] = "State updated"
+    else
+      flash[:error] = "Could not update state"
+    end
+    redirect_to :action => :show, :id => params[:id]
   end
+
+  private
+    def fetch_dare
+      Dare.find params[:id]
+    end
 end
