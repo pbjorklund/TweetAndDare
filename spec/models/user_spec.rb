@@ -20,6 +20,12 @@ describe User do
     oa
   end
 
+  it "remoes the @ from nickname if present" do
+    u = build(:user)
+    u.nickname = "@Test"
+    u.nickname.should eq("Test")
+  end
+
   it "must have a unique username" do
     user_attr = FactoryGirl.attributes_for(:user)
     lambda do
