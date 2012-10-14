@@ -1,15 +1,12 @@
 class Dare < ActiveRecord::Base
 
-  attr_accessible  :text, :daree
+  attr_accessible  :text
+  attr_accessible :owner
 
-  belongs_to :owner
-  belongs_to :dared_user
+  belongs_to :owner, class_name: 'User'
+  belongs_to :dared_user, class_name: 'User'
 
   validates :text, presence: true
-
-  def daree=(args)
-    User.create!(nickname: args["nickname"])
-  end
 
   # Public: Turn the dare into a tweet which can be submitted to twitter.
   #

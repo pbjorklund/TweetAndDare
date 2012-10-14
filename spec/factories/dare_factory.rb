@@ -5,6 +5,6 @@ FactoryGirl.define do
 
   factory :dare do
     text 'run Stockholm marathon'
-    daree { FactoryGirl.generate(:dare_nickname) }
+    owner { FactoryGirl.create(:user) }
   end
 end
