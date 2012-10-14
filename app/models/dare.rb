@@ -8,7 +8,7 @@ class Dare < ActiveRecord::Base
   belongs_to :dared_user, class_name: 'User'
 
   validates :text, presence: true
-  validates :target, format: { with: /^(\@|\#)/i }, if: :target?
+  validates :target, format: { with: /^(\@|\#)?[a-z1-9\_]{1,21}/i }, if: :target?
 
   STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
 
