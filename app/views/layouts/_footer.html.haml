@@ -2,6 +2,6 @@
 
 %div
   ="Copyright © Tweet And Dare Team 2012 - #{Time.now.year}"
-  - if current_user
-    %p.pull-right= link_to "Log out", logout_path
-
+  .pull-right
+    = link_to "http://www.railsrumble.com" do
+      = image_tag "http://s1.railsrumble.com/assets/rr-logo-small-f2c869882ac5306656d15ac149cdd8a8.png"
