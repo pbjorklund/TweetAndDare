@@ -11,7 +11,17 @@ class User < ActiveRecord::Base
 
   def self.create_or_find_from_omniauth omniauth
     user = find_by_uid(omniauth.uid)
-    unless  user
+    if user.nil?
+      user = User.find_by_nickname(omniauth.info.nickname)
+      unless user.nil?
+        user.uid = omniauth.uid
+        user.image = omniauth.info.image
+        user.save
+        user.auth = Auth.new( oauth_token: omniauth.credentials.token, oauth_token_secret: omniauth.credentials.secret)
+      end
+    end
+
+    unless user
       user = self.create!( uid: omniauth.uid, nickname: omniauth.info.nickname, image: omniauth.info.image)
       user.auth = Auth.new( oauth_token: omniauth.credentials.token, oauth_token_secret: omniauth.credentials.secret)
       user.save!
