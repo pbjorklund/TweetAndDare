@@ -2,6 +2,7 @@ class DaresController < ApplicationController
   def index
     @dare = Dare.new
     @recent_dares = Dare.last(5)
+    @popular_dares = Dare.get_most_popular
   end
 
   def show

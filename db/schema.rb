@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014185303) do
+ActiveRecord::Schema.define(:version => 20121014211216) do
 
   create_table "auths", :force => true do |t|
     t.string   "oauth_token"
@@ -22,14 +22,21 @@ ActiveRecord::Schema.define(:version => 20121014185303) do
   end
 
   create_table "dares", :force => true do |t|
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "text"
     t.integer  "owner_id"
     t.integer  "dared_user_id"
     t.string   "target"
-    t.integer  "state",         :default => 0
+    t.integer  "state",              :default => 0
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
+    t.integer  "cached_votes_down",  :default => 0
   end
+
+  add_index "dares", ["cached_votes_down"], :name => "index_dares_on_cached_votes_down"
+  add_index "dares", ["cached_votes_total"], :name => "index_dares_on_cached_votes_total"
+  add_index "dares", ["cached_votes_up"], :name => "index_dares_on_cached_votes_up"
 
   create_table "users", :force => true do |t|
     t.string   "uid"
