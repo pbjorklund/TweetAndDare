@@ -2,19 +2,21 @@
   - dares.reverse.each do |dare|
     %li.clearfix{ style: 'margin-bottom: 5px;' }
       .pull-left{ style: 'margin-right: 5px' }
-        - if current_user
-          =link_to dont_path(id: dare.id), remote: true, class: "dont-count btn btn-large btn-danger" do
-            Don't
-            = dare.dislikes.size
-          =link_to do_path(id: dare.id), remote: true, class: "do-count btn btn-large btn-success" do
-            Do
-            = dare.likes.size
         - if dare.owner.image
           = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
       .pull-right
-        = link_to dare, class: 'btn btn-small' do
-          %strong= "View"
-          %i.icon-chevron-right
+        .btn-group
+          - if current_user
+            =link_to dont_path(id: dare.id), remote: true, class: "vote-dont btn btn-small btn-danger" do
+              %i.icon-chevron-down.icon-white
+              %span.votes-count= dare.dislikes.size
+            =link_to do_path(id: dare.id), remote: true, class: "vote-do btn btn-small btn-success" do
+              %i.icon-chevron-up.icon-white
+              %span.votes-count= dare.likes.size
+          = link_to dare, class: 'btn btn-small' do
+            %strong= "View"
+            %i.icon-chevron-right
+
       = twitter_link dare.owner.nickname
       dared
       = twitter_link dare.target

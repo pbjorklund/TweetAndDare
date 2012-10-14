@@ -42,4 +42,9 @@ class Dare < ActiveRecord::Base
     tweet.concat text[0..((118 - tweet.length) - 1)]
     tweet.concat " http://tweetanddare.com/dares/#{id}"
   end
+
+  def votes_hash
+    { likes: self.likes.size, dislikes: self.dislikes.size }
+  end
+
 end
