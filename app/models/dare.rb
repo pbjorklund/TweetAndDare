@@ -1,7 +1,7 @@
 class Dare < ActiveRecord::Base
 
   attr_accessible  :text
-  attr_accessible :owner
+  attr_accessible :owner, :dared_user
 
   belongs_to :owner, class_name: 'User'
   belongs_to :dared_user, class_name: 'User'
