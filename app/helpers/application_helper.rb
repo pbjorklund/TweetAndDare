@@ -1,7 +1,16 @@
 module ApplicationHelper
 
 	def twitter_link text
-		raw link_to "@#{text}", "http://twitter.com/#{text}", :target => "_blank"
+    if text.match /^\#/i
+      link_text = text
+    elsif text.match /^\@/i
+      link_text = text
+      link_path = text.gsub(/^\@/i,"")
+    else
+      link_text = "@#{text}"
+      link_path = text
+    end
+		raw link_to link_text, "http://twitter.com/#{text}", :target => "_blank"
 	end
 
 	def pretty_state state
