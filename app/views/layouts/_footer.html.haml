@@ -1,5 +1,6 @@
 %hr
 
-%p="Copyright © r12-team-176 2012 - #{Time.now.year}"
-= link_to "authenticate/log_out" if @current_user
-= "User: #{@current_user}"
+%div
+  ="Copyright © r12-team-176 2012 - #{Time.now.year}"
+  %p.pull-right= link_to "Log out", "/authentications/log_out" if @current_user
+
