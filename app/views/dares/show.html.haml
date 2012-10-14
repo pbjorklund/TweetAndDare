@@ -33,9 +33,15 @@
         = form_for(@dare, :action => :update) do |f|
           = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
           %br
-          - message = "If you are #{@dare.target} click here to accept the dare!"
+          - if current_user
+            - message = "If you are #{@dare.target}, click here to accept the dare!"
+          - else
+            - message = "If you are #{@dare.target}, login to accept the dare!"
           - if @dare.target.starts_with?("#")
-            - message = "Accept the dare!"
+            - if current_user
+              - message = "Accept the dare!"
+            - else
+              - message = "Login to accept the dare!"
           = f.submit message, :class => "btn btn-success btn-large"
   .span6.pull-right
     %h2
