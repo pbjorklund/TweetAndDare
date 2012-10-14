@@ -13,10 +13,15 @@ describe DaresController do
     end
 
     describe '#create' do
-      it 'creates dares' do
-        Twitter::Client.stub(:update).and_return(:true)
+      it 'creates dares when signed in' do
+        controller.stub(:current_user).and_return(FactoryGirl.create(:user))
         post 'create', dare: FactoryGirl.attributes_for(:dare_params)
-        response.should be_successful
+        response.should be_redirect
+      end
+
+      it 'creates dares after signing in' do
+        post 'create', dare: FactoryGirl.attributes_for(:dare_params)
+        response.should be_redirect
       end
     end
 

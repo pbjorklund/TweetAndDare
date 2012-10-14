@@ -1,11 +1,18 @@
 class AuthenticationsController < ApplicationController
   def create
     user = User.create_or_find_from_omniauth(omniauth)
-    p user
     session[:uid] = user.uid if user
     user ? flash[:notice] = "You signed in" : flash[:error] = "User not found"
 
-    redirect_to root_path
+    if session[:initiated_dare]
+      dare_hash = Hash["dare", session[:initiated_dare]]
+      create_dare dare_hash
+
+      session[:initiated_dare] = nil
+    else
+      redirect_to root_path
+    end
+
   end
 
   def log_out
