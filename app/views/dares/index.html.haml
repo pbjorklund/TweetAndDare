@@ -5,9 +5,13 @@
         .row
           %span= "I dare"
           = f.fields_for :dared_user do |dared_user_field|
-            = dared_user_field.text_field :nickname, style: 'width: 300px;', placeholder: '@twitter_handle'
+            = dared_user_field.text_field :nickname, style: 'width: 400px;', placeholder: '@twitter_handle'
+          %br
+          %br
         .row
           %span= "to"
+          %br
+          %br
           = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'to come up with a better placeholder'
         .row
           .form-actions
