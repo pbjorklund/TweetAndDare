@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014134130) do
+ActiveRecord::Schema.define(:version => 20121014142435) do
 
   create_table "auths", :force => true do |t|
     t.string   "oauth_token"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(:version => 20121014134130) do
   end
 
   create_table "dares", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "text"
     t.integer  "owner_id"
     t.integer  "dared_user_id"
-    t.integer  "state"
+    t.integer  "state",         :default => 0
     t.string   "target"
   end
 

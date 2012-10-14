@@ -10,6 +10,8 @@ class Dare < ActiveRecord::Base
   validates :text, presence: true
   validates :target, format: { with: /^(\@|\#)/i }, if: :target?
 
+  STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
+
   # Public: Customized target setter
   #
   # Returns the target value
@@ -20,16 +22,6 @@ class Dare < ActiveRecord::Base
       end
     end
     self[:target] = val
-  end
-
-  STATE_NEW = 0
-  STATE_ACCEPTED = 1
-  STATE_COMPLETED = 2
-  STATE_FAILED = 3
-
-  def initialize params = {}
-    super(params)
-    self.state = STATE_NEW
   end
 
   # Public: Turn the dare into a tweet which can be submitted to twitter.
