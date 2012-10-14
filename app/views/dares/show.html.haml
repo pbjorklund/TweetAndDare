@@ -1,7 +1,8 @@
 .page-header
   %h3
-    .pull-left{ style: 'margin-right: 10px;'}
-      = image_tag @dare.owner.image
+    - if @dare.owner.image
+      .pull-left{ style: 'margin-right: 10px;'}
+        = image_tag @dare.owner.image
     - if @dare.dared_user
       .pull-right{ style: 'margin-left: 10px;'}
         = image_tag @dare.dared_user.image
