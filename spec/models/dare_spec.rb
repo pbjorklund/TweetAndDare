@@ -47,17 +47,17 @@ describe Dare do
         dare.dared_user = nil
       end
       it { dare.as_tweet.should be_a(String) }
-      it { dare.as_tweet.should eq("I #dare #anyone to run Stockholm marathon http://satsun.r12.railsrumble.com/dares/#{dare.id}") }
+      it { dare.as_tweet.should eq("I #dare #anyone to run Stockholm marathon http://tweetanddare.com/dares/#{dare.id}") }
       it { dare.as_tweet.should match('#anyone') }
       it { dare.as_tweet.should match('run Stockholm marathon') }
-      it { dare.as_tweet.should match(/http(s)?\:\/\/([a-z0-9\-\_]*)\.[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
+      it { dare.as_tweet.should match(/http(s)?\:\/\/[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
     end
 
     context "when a dared user" do
       it { dare.as_tweet.should be_a(String) }
-      it { dare.as_tweet.should eq("I #dare @#{dare.dared_user.nickname} to run Stockholm marathon http://satsun.r12.railsrumble.com/dares/#{dare.id}") }
+      it { dare.as_tweet.should eq("I #dare @#{dare.dared_user.nickname} to run Stockholm marathon http://tweetanddare.com/dares/#{dare.id}") }
       it { dare.as_tweet.should match('run Stockholm marathon') }
-      it { dare.as_tweet.should match(/http(s)?\:\/\/([a-z0-9\-\_]*)\.[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
+      it { dare.as_tweet.should match(/http(s)?\:\/\/[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
     end
   end
 end
