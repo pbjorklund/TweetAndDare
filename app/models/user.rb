@@ -19,4 +19,16 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  # Public: Connets to twitter using their client
+  # based on the users oAuth credentials.
+  #
+  # Returns a Twitter Client instance.
+  def twitter
+    Twitter::Client.new({
+      oauth_token: auth.oauth_token,
+      oauth_token_secret: auth.oauth_token_secret
+    })
+  end
+
 end

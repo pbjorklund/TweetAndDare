@@ -3,16 +3,20 @@
     %center
       = form_for @dare, url: dares_path, method: :post do |f|
         .row
-          %span= "I dare"
-          = f.fields_for :dared_user do |dared_user_field|
-            = dared_user_field.text_field :nickname, style: 'width: 400px;', placeholder: '@twitter_handle'
+          %span I dare&nbsp;
+          %span
+            = f.fields_for :dared_user do |dared_user_field|
+              = dared_user_field.text_field :nickname, style: 'width: 400px;', placeholder: '@twitter_handle'
+            .field-decoration
           %br
           %br
         .row
           %span= "to"
           %br
           %br
-          = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'to come up with a better placeholder'
+          %span
+            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'come up with a better placeholder'
+            .field-decoration
         .row
           .form-actions
             = f.submit 'Dare'
