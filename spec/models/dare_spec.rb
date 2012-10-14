@@ -14,6 +14,33 @@ describe Dare do
     dare.should be_invalid
   end
 
+  describe "#target" do
+    it "must start with a @ handle or # tag" do
+      build(:dare, target: nil).should be_valid
+      build(:dare, target: 'invalid').should_not be_valid
+      build(:dare, target: '@handle').should be_valid
+      build(:dare, target: '#tag').should be_valid
+    end
+    context "when it contains a @ handle" do
+      before(:each) do
+        dare.dared_user = nil
+        dare.target = "@createdFromTarget"
+      end
+      it "finds or creates a user" do
+        dare.dared_user.nickname.should eq("createdFromTarget")
+      end
+    end
+    context "when it contains a # tag" do
+      before(:each) do
+        dare.dared_user = nil
+        dare.target = "#targethash"
+      end
+      it "does not create a user" do
+        dare.dared_user.should be_nil
+      end
+    end
+  end
+
   describe "#as_tweet" do
     context "when no dared user" do
       before(:each) do

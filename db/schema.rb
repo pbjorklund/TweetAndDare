@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121014134130) do
     t.integer  "owner_id"
     t.integer  "dared_user_id"
     t.integer  "state"
+    t.string   "target"
   end
 
   create_table "users", :force => true do |t|

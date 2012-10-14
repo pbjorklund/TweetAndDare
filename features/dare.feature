@@ -5,7 +5,7 @@ Feature: Daring people
   @logged_in
   Scenario: Adding a dare
     Given I am on the startpage
-    When I fill in "dare_dared_user_nickname" with "@zeeraw"
+    When I fill in "dare_target" with "@zeeraw"
     And I fill in "dare_text" with "run stockholm marathon"
     And I submit the form
     Then I should get redirected to the twitter authentication

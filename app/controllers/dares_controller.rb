@@ -1,6 +1,7 @@
 class DaresController < ApplicationController
   def index
     @dare = Dare.new
+    @recent_dares = Dare.last(5)
   end
 
   def show
@@ -9,7 +10,7 @@ class DaresController < ApplicationController
 
   def create
     if current_user
-      create_dare params
+      create_dare params["dare"]
     else
       session[:initiated_dare] = params["dare"]
       redirect_to "/auth/twitter"

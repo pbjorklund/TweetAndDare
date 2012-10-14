@@ -5,9 +5,7 @@ class AuthenticationsController < ApplicationController
     user ? flash[:notice] = "You signed in" : flash[:error] = "User not found"
 
     if session[:initiated_dare]
-      dare_hash = Hash["dare", session[:initiated_dare]]
-      create_dare dare_hash
-
+      create_dare session[:initiated_dare]
       session[:initiated_dare] = nil
     else
       redirect_to root_path

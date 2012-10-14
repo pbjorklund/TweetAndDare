@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :owning_dares, :class_name => "Dare", :foreign_key => :owner_id
   has_many :received_dares, :class_name => "Dare", :foreign_key => :dared_user_id
 
-  validates :nickname, uniqueness: true
+  validates :nickname, uniqueness: true, if: :nickname?
 
   def nickname=(val); self[:nickname] = val.gsub(/@/i,""); end
 
@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create! nickname
+    nickname.gsub!(/@/i,"")
     user = User.find_by_nickname nickname
     unless user
       user = User.create({nickname: nickname })
