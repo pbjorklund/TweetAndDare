@@ -4,6 +4,7 @@ class AuthenticationsController < ApplicationController
     p user
     session[:uid] = user.uid if user
     user ? flash[:notice] = "You signed in" : flash[:error] = "User not found"
+
     redirect_to root_path
   end
 
