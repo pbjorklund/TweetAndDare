@@ -56,12 +56,9 @@ describe User do
     end
   end
 
-  describe "#twitter" do
+  describe "#twitter_client" do
     it "does not raise any errors" do
-      expect { user.twitter }.to_not raise_error
-    end
-    it "returns an instance of the Twitter connector based on the users oAuth credentials" do
-      user.twitter.should be_a(Twitter::Client)
+      expect { user.twitter_client }.to_not raise_error
     end
   end
 
