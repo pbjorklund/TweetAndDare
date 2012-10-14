@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('a.vote-dont, a.vote-do').live 'ajax:complete', (e,resp,xhr) ->
+    votesHash = $.parseJSON(resp.responseText)
+    console.log $(@).parent().find('.vote-do span.votes-count').text(votesHash.likes)
+    console.log $(@).parent().find('.vote-dont span.votes-count').text(votesHash.dislikes)
+
