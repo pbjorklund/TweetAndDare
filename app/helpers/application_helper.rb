@@ -13,7 +13,7 @@ module ApplicationHelper
 		raw link_to link_text, "http://twitter.com/#{text}", :target => "_blank"
 	end
 
-	def pretty_state state
+	def pretty_state state, selected = false
 		state ||= Dare::STATES[:default]
 		state_text = ""
 		cls = ""
@@ -30,6 +30,10 @@ module ApplicationHelper
 				state_text = "Failed"
 				cls = "label-important"
 		end
-		raw "<span class='label #{cls}'>#{state_text}</span>"
+		checked = ""
+		if selected
+			checked = "<i class='icon-ok icon-white'></i>"
+		end
+		raw "<span class='label #{cls}'>#{state_text}" + checked + "</span>"
 	end
 end

@@ -14,7 +14,14 @@
     = @dare.text
 .row
   .span12
-    = pretty_state(@dare.state)
+    %h2
+      Current state
+      %br
+      - Dare::STATES.keys[1..-1].each do |k|
+        - if @dare.state == Dare::STATES[k]
+          = pretty_state(Dare::STATES[k], true)
+        - else
+          = pretty_state(Dare::STATES[k])
 
 %center
   = render "disqus/disqus"
