@@ -14,10 +14,9 @@ describe DaresController do
 
     describe '#create' do
       it 'creates dares' do
-        post 'create', dare: FactoryGirl.attributes_for(:dare)
+        post 'create', dare: FactoryGirl.attributes_for(:dare_params)
         response.should be_successful
       end
-
     end
 
     describe '#show' do

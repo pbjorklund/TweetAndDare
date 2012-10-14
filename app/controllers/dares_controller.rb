@@ -8,7 +8,7 @@ class DaresController < ApplicationController
   end
 
   def create
-    user = User.create!({nickname: params["dare"]["owner"]["nickname"]})
+    user = User.create!({nickname: params["dare"][:owner][:nickname]})
     @dare = Dare.create({text: params["dare"]["text"], owner: user })
     @dare.save!
 
