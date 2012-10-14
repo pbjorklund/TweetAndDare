@@ -4,8 +4,8 @@
       = form_for @dare, url: dares_path, method: :post do |f|
         .row
           %span= "I dare"
-          = f.fields_for :owner do |owner_field|
-            = owner_field.text_field :nickname, style: 'width: 300px;', placeholder: '@twitter_handle'
+          = f.fields_for :dared_user do |dared_user_field|
+            = dared_user_field.text_field :nickname, style: 'width: 300px;', placeholder: '@twitter_handle'
         .row
           %span= "to"
           = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'to come up with a better placeholder'

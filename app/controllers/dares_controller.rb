@@ -9,7 +9,8 @@ class DaresController < ApplicationController
 
   def create
     user = User.create!({nickname: params["dare"][:owner][:nickname]})
-    @dare = Dare.create({text: params["dare"]["text"], owner: user })
+    @dare = Dare.create({text: params["dare"]["text"], dared_user: user })
+    #TODO TARGET CREATED NOT OWNER
     @dare.save!
 
     render :show
