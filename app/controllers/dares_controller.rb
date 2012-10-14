@@ -22,7 +22,10 @@ class DaresController < ApplicationController
     @dare = Dare.find(params[:id])
     @dare.state = params[:dare][:state]
 
-    if @dare.state > Dare::STATES[:new] && current_user && (@dare.target == "@#{current_user.nickname}" or @dare.target.starts_with?("#") or @dare.owner == current_user)
+    if @dare.state == Dare::STATES[:accepted] && current_user == @dare.owner
+      flash[:error] = "You cannot accept this dare!"
+      redirect_to "/dares/#{params[:id]}"
+    elsif @dare.state > Dare::STATES[:new] && current_user && (@dare.target == "@#{current_user.nickname}" or @dare.target.starts_with?("#") or @dare.owner == current_user)
       unless @dare.owner == current_user
         @dare.dared_user = current_user
       end
