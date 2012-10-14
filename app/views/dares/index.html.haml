@@ -24,7 +24,7 @@
     - unless @recent_dares.empty?
       %h2= "Recent dares"
       = render partial: 'dares_list', locals: { dares: @recent_dares }
-  / .span6
-  /   - unless @popular_dares.empty?
-  /     %h2= "Popular dares"
-  /     = render partial: 'dares_list', locals: { dares: @popular_dares }
+  .span6
+    - unless @popular_dares.empty?
+      %h2= "Popular dares"
+      = render partial: 'dares_list', locals: { dares: @popular_dares }

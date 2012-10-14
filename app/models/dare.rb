@@ -15,6 +15,11 @@ class Dare < ActiveRecord::Base
 
   STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
 
+  def self.get_most_popular
+    Dare.all.sort_by(&:cached_votes_total)
+
+  end
+
   # Public: Customized target setter
   #
   # Returns the target value
