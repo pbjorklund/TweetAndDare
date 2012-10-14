@@ -10,8 +10,8 @@
     // GOOGLE
     - unless Rails.env.development?
       = analytics_init :local => Rails.env.development?
-
   %body
+    %script{:src => "http://s0.railsrumble.com/banner.js", :type => "text/javascript"}
     %div.container
       = render "layouts/header"
       = render "layouts/notices"
