@@ -20,10 +20,6 @@ describe DaresController do
     end
 
     describe '#show' do
-
-      before(:each) do
-      end
-
       it 'is accessible' do
         d = FactoryGirl.create(:dare)
         get 'show', { id: d.id }
