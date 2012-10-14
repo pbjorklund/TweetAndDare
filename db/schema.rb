@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20121014142435) do
     t.string   "text"
     t.integer  "owner_id"
     t.integer  "dared_user_id"
-    t.integer  "state",         :default => 0
     t.string   "target"
+    t.integer  "state",         :default => 0
   end
 
   create_table "users", :force => true do |t|
