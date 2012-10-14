@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
       user = self.create!( uid: omniauth.uid, nickname: omniauth.info.nickname)
       user.auth = Auth.new( oauth_token: omniauth.credentials.token, oauth_token_secret: omniauth.credentials.secret)
       user.save!
+    else # try to update tokens
+      user.auth.update_attributes(oauth_token: omniauth.credentials.token, oauth_token_secret: omniauth.credentials.secret)
+      user.save
     end
     user
   end

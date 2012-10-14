@@ -31,5 +31,10 @@ describe User do
       Auth.stub(:new).and_return(nil)
       expect { User.create_or_find_from_omniauth omniauth }.to change{User.count}.by(1)
     end
+
+    it "updates changed credentials" do
+      # TODO:
+      # expect omniauth attributes to change when tokens have changed
+    end
   end
 end
