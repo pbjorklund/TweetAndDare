@@ -1,9 +1,9 @@
 .page-header
   %h3
-    - if @dare.owner.image
+    - if @dare.owner && @dare.owner.image
       .pull-left{ style: 'margin-right: 10px;'}
         = image_tag @dare.owner.image
-    - if @dare.dared_user
+    - if @dare.dared_user && @dare.dared_user.image
       .pull-right{ style: 'margin-left: 10px;'}
         = image_tag @dare.dared_user.image
     %center
@@ -12,9 +12,38 @@
       = twitter_link @dare.target
       to
       = @dare.text
-
 .row
   .span8
+    - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
+      .row.clearfix
+        .span8
+          = form_for(@dare, :action => :update) do |f|
+            = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:completed]}'></hidden>"
+            %br
+            = f.submit "Completed", :class => "btn btn-success btn-large"
+      .row.clearfix
+        .span8
+          = form_for(@dare, :action => :update) do |f|
+            = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:failed]}'></hidden>"
+            %br
+            = f.submit "Failed", :class => "btn btn-danger btn-large"
+
+    - elsif @dare.state == Dare::STATES[:new]
+      .row.clearfix
+        .span8
+          = form_for(@dare, :action => :update) do |f|
+            = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
+            %br
+            - if current_user
+              - message = "If you are #{@dare.target}, click here to accept the dare!"
+            - else
+              - message = "If you are #{@dare.target}, login to accept the dare!"
+            - if @dare.target.starts_with?("#")
+              - if current_user
+                - message = "Accept the dare!"
+              - else
+                - message = "Login to accept the dare!"
+            = f.submit message, :class => "btn btn-large"
     %h2
       - if @dare.dared_user
         - if @dare.dared_user.image
@@ -52,34 +81,6 @@
             = pretty_state(Dare::STATES[k], true)
           - else
             = pretty_state(Dare::STATES[k])
-
-    .row
-      - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
-        .span2
-          = form_for(@dare, :action => :update) do |f|
-            = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:completed]}'></hidden>"
-            %br
-            = f.submit "Completed", :class => "btn btn-success btn-large"
-        .span2
-          = form_for(@dare, :action => :update) do |f|
-            = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:failed]}'></hidden>"
-            %br
-            = f.submit "Failed", :class => "btn btn-danger btn-large"
-      - elsif @dare.state == Dare::STATES[:new]
-        .span4
-          = form_for(@dare, :action => :update) do |f|
-            = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
-            %br
-            - if current_user
-              - message = "If you are #{@dare.target}, click here to accept the dare!"
-            - else
-              - message = "If you are #{@dare.target}, login to accept the dare!"
-            - if @dare.target.starts_with?("#")
-              - if current_user
-                - message = "Accept the dare!"
-              - else
-                - message = "Login to accept the dare!"
-            = f.submit message, :class => "btn btn-success btn-large"
 
 %br
 %br
