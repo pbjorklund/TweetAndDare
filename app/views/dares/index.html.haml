@@ -32,8 +32,8 @@
                   %td
                     - if dare.owner.image
                       = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
-                    %a{ :href => "http://www.twitter.com/#{dare.owner.nickname}"}= dare.owner.nickname
+                    = twitter_link dare.owner.nickname
                     dared
-                    %a{ :href => "http://www.twitter.com/#{dare.dared_user.nickname}"}= dare.dared_user.nickname
+                    = twitter_link dare.target
                     to
                     = dare.text

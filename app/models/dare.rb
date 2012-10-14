@@ -33,7 +33,7 @@ class Dare < ActiveRecord::Base
     tweet.concat dared_user.present? ? "@" + dared_user.nickname : "#anyone"
     tweet.concat " to "
     tweet.concat text[0..((118 - tweet.length) - 1)]
-    tweet.concat " http://some.url.com/dares/12345"
+    tweet.concat " http://satsun.r12.railsrumble.com/dares/#{id}"
   end
 
 end
