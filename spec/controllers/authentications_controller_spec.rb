@@ -7,8 +7,8 @@ describe AuthenticationsController do
     end
 
     context "successful signin"
-    it "creates a user if env has omniauth.auth uid" do
-      User.stub(:create_from_omniauth).and_return(FactoryGirl.build(:user))
+    it "creates a user or finds a user if env has omniauth.auth uid" do
+      User.stub(:create_or_find_from_omniauth).and_return(FactoryGirl.build(:user))
 
       post 'create'
 
@@ -18,7 +18,7 @@ describe AuthenticationsController do
 
     context "unsuccessful signin" do
       it "does not create a user if env has omniauth.auth uid" do
-        User.stub(:create_from_omniauth).and_return(nil)
+        User.stub(:create_or_find_from_omniauth).and_return(nil)
 
         post 'create'
 
