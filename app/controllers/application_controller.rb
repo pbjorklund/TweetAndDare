@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_dare attrs
-      @dare = Dare.build(attrs)
+      @dare = Dare.new(attrs)
       @dare.owner = current_user
       if @dare.save
         tweet_dare current_user, @dare.as_tweet
