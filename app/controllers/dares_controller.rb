@@ -22,7 +22,6 @@ class DaresController < ApplicationController
   private
   def tweet_dare user, tweet
     client = user.twitter_client
-    client = Twitter::Client.new(oauth_hash)
     Thread.new { client.update(tweet) }
   end
 
