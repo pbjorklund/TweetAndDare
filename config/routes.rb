@@ -3,11 +3,9 @@ RailsRumble::Application.routes.draw do
 
   resources :dashboard, only: [:index, :show]
 
-  resources :authentications do
-    collection do
-      get "log_out"
-    end
-  end
+  resources :authentications
+
+  match "/logout" => "sessions#destroy", as: :logout
 
   match "/auth/twitter/callback" => "authentications#create"
 
