@@ -9,6 +9,7 @@ describe User do
 
     info = OpenStruct.new
     info.nickname = "pbjorklund"
+    info.image = "https://twimg0-a.akamaihd.net/profile_images/2243520267/Zeeraw.png"
 
     cred = OpenStruct.new
     cred.token = "token"
@@ -32,4 +33,5 @@ describe User do
       expect { User.create_or_find_from_omniauth omniauth }.to change{User.count}.by(1)
     end
   end
+
 end
