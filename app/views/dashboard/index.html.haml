@@ -5,32 +5,7 @@
     ="@#{current_user.nickname}"
 
 %h2 My dares
-%table
-  %tbody
-    - current_user.owning_dares.each do |dare|
-      %tr
-        %td
-          - if dare.owner.image
-            = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
-          = twitter_link dare.owner.nickname
-          dared
-          = twitter_link dare.target
-          to
-          = dare.text
-        %td
-          =link_to "<- View", dare
+= render :partial => "dares/dares_list", :locals => { :dares => current_user.owning_dares }
+
 %h2 Dared
-%table
-  %tbody
-    - current_user.received_dares.each do |dare|
-      %tr
-        %td
-          - if dare.owner.image
-            = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
-          = twitter_link dare.owner.nickname
-          dared
-          = twitter_link dare.target
-          to
-          = dare.text
-        %td
-          =link_to "<- View", dare
+= render :partial => "dares/dares_list", :locals => { :dares => current_user.received_dares }
