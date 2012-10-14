@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create! nickname
+    nickname.gsub!(/@/i,"")
     user = User.find_by_nickname nickname
     unless user
       user = User.create({nickname: nickname })

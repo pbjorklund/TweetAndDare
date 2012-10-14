@@ -1,6 +1,7 @@
 class DaresController < ApplicationController
   def index
     @dare = Dare.new
+    @recent_dares = Dare.last(5)
   end
 
   def show
