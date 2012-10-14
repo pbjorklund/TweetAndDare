@@ -26,10 +26,10 @@ describe User do
     end.should raise_error
   end
 
-  describe "#self.create_from_omniauth" do
-    it "creates a user given a valid auth" do
+  describe "#self.create_or_find_from_omniauth" do
+    it "creates or finds a user given a valid auth" do
       Auth.stub(:new).and_return(nil)
-      expect { User.create_from_omniauth omniauth }.to change{User.count}.by(1)
+      expect { User.create_or_find_from_omniauth omniauth }.to change{User.count}.by(1)
     end
   end
 end

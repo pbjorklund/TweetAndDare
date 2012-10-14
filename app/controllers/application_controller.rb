@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  helper_method :current_user
+
   protected
   	def authenticated
   		if current_user
@@ -15,9 +17,9 @@ class ApplicationController < ActionController::Base
 		redirect_to "/auth/twitter"
 	end
 
-  	def current_user
-  		if session[:uid]
-  			@current_user = User.find_by_uid(session[:uid])
-  		end
-  	end
+	def current_user
+		if session[:uid]
+			@current_user = User.find_by_uid(session[:uid])
+		end
+	end
 end
