@@ -1,21 +1,20 @@
 .row
   .span8.offset2
     %center
-      = form_for @dare, url: dares_path, method: :post do |f|
+      = form_for @dare, url: dares_path, method: :post, :validate => true do |f|
         .row
           %span I dare&nbsp;
           %span
-            = f.text_field :target, style: 'width: 340px;', placeholder: '@nickname/#hashtag'
             .field-decoration
+            = f.text_field :target, style: 'width: 340px;', placeholder: '@nickname/#hashtag'
           %br
           %br
         .row
           %span= "to"
           %br
-          %br
           %span
-            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'do something awesome . . .'
             .field-decoration
+            = f.text_field :text, style: 'width: 100%;', label: false, placeholder: 'do something awesome . . .'
         .row
           .form-actions
             = f.submit 'Dare'

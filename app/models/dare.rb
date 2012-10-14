@@ -7,8 +7,9 @@ class Dare < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   belongs_to :dared_user, class_name: 'User'
 
-  validates :text, presence: true
-  validates :target, format: { with: /^(\@|\#)?[a-z1-9\_]{1,21}/i }, if: :target?
+  validates :text, presence: {  message: "Can't leave this blank. We suggest: 'try Tweet And Dare'" }
+  validates :target, format: { with: /^(@|#)[a-z1-9\_]{1,21}/i, message: "Only @mentions and #hashtags allowed" }
+  validates :target, presence: { message: "Can't be blank. Dare a friend!" }
 
   STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
 
