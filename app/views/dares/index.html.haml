@@ -3,14 +3,14 @@
     %center
       = form_for @dare, url: dares_path, method: :post, :validate => true do |f|
         .row
-          %span I dare&nbsp;
+          %span.form-text I dare&nbsp;
           %span
             .field-decoration
             = f.text_field :target, style: 'width: 340px;', placeholder: '@nickname/#hashtag'
           %br
           %br
         .row
-          %span= "to"
+          %span.form-text= "to"
           %br
           %span
             .field-decoration
