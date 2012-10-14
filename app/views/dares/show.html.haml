@@ -1,8 +1,8 @@
 .row
-  .span8
-    .page-header
-      %span This user
-      %h1= @dare.dared_user.nickname
-      %span Dared this text
-      %h1= @dare.text
-  .span4
+  .page-header
+    %h1
+      = twitter_link @dare.owner ? "#{@dare.owner.nickname}" : "Some_user"
+      dared
+      = twitter_link @dare.dared_user.nickname
+      to
+      = @dare.text

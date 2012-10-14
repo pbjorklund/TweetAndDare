@@ -1,7 +1,7 @@
 %p 
-  = link_to  "@#{dare.owner.nickname}", "http://twitter.com/#{dare.owner.nickname}", :target => "_blank"
+  = twitter_link "#{dare.owner.nickname}"
   dared
-  = link_to  "@#{dare.dared_user.nickname}", "http://twitter.com/#{dare.dared_user.nickname}", :target => "_blank"
+  = twitter_link "#{dare.dared_user.nickname}"
   to 
   = dare.text
   = link_to "Show", dare_path(dare.id), :class => "btn pull-right"
