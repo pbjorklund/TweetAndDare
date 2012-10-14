@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :owning_dares, :class_name => "Dare", :foreign_key => :owner_id
   has_many :received_dares, :class_name => "Dare", :foreign_key => :dared_user_id
 
-  validates :nickname, uniqueness: true
+  validates :nickname, uniqueness: true, if: :nickname?
 
   def nickname=(val); self[:nickname] = val.gsub(/@/i,""); end
 

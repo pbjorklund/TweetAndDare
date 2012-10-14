@@ -5,8 +5,7 @@
         .row
           %span I dare&nbsp;
           %span
-            = f.fields_for :dared_user do |dared_user_field|
-              = dared_user_field.text_field :nickname, style: 'width: 360px;', placeholder: '@nickname'
+            = f.text_field :target, style: 'width: 340px;', placeholder: '@nickname'
             .field-decoration
           %br
           %br

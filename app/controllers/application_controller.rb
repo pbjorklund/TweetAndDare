@@ -23,10 +23,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_dare args_hash
-      user = User.find_or_create!(args_hash["dare"][:dared_user][:nickname])
-      @dare = Dare.create({text: args_hash["dare"]["text"], dared_user: user })
-      @dare.save!
+  def create_dare attrs
+      @dare = Dare.create(attrs)
 
       if current_user.oauth_hash
         tweet_dare current_user, @dare.as_tweet

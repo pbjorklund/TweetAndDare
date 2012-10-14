@@ -1,12 +1,26 @@
 class Dare < ActiveRecord::Base
 
-  attr_accessible  :text
+  attr_accessible :text
   attr_accessible :owner, :dared_user
+  attr_accessible :target
 
   belongs_to :owner, class_name: 'User'
   belongs_to :dared_user, class_name: 'User'
 
   validates :text, presence: true
+  validates :target, format: { with: /^(\@|\#)/i }, if: :target?
+
+  # Public: Customized target setter
+  #
+  # Returns the target value
+  def target=(val)
+    if val
+      if val.match(/^\@/)
+        self.dared_user = User.find_or_initialize_by_nickname(nickname: val)
+      end
+    end
+    self[:target] = val
+  end
 
   # Public: Turn the dare into a tweet which can be submitted to twitter.
   #
