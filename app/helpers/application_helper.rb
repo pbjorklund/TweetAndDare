@@ -5,22 +5,22 @@ module ApplicationHelper
 	end
 
 	def pretty_state state
-		state ||= Dare::STATE_NEW
+		state ||= Dare::STATES[:default]
 		state_text = ""
 		cls = ""
 		case state
-			when Dare::STATE_NEW
+			when Dare::STATES[:new]
 				state_text = "New"
-			when Dare::STATE_ACCEPTED
+			when Dare::STATES[:accepted]
 				state_text = "Accepted"
-				cls = "info"
-	  		when Dare::STATE_COMPLETED
+				cls = "label-info"
+	  		when Dare::STATES[:completed]
 				state_text = "Completed"
-				cls = "success"
-	  		when Dare::STATE_FAILED
+				cls = "label-success"
+	  		when Dare::STATES[:failed]
 				state_text = "Failed"
-				cls = "important"
+				cls = "label-important"
 		end
-		raw "<span class='label label-#{cls}'>#{state_text}</span>"
+		raw "<span class='label #{cls}'>#{state_text}</span>"
 	end
 end
