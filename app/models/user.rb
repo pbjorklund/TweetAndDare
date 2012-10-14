@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   validates :nickname, uniqueness: true
 
+  def nickname=(val); self[:nickname] = val.gsub(/@/i,""); end
+
   def self.create_or_find_from_omniauth omniauth
     user = find_by_uid(omniauth.uid)
     unless  user
