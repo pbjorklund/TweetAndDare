@@ -24,15 +24,15 @@ class ApplicationController < ActionController::Base
   end
 
   def create_dare attrs
-      @dare = Dare.create(attrs)
-
-      if current_user.oauth_hash
-        @dare.owner = current_user
-        @dare.save
+      @dare = Dare.build(attrs)
+      @dare.owner = current_user
+      if @dare.save
         tweet_dare current_user, @dare.as_tweet
+        redirect_to @dare
+      else
+        redirect_to root_path
+        flash[:error] = "Something went wrong and our system chickened out when it was going to deliver your dare."
       end
-
-      redirect_to @dare
   end
 
   def tweet_dare user, tweet
