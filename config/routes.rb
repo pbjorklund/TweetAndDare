@@ -1,5 +1,5 @@
 RailsRumble::Application.routes.draw do
-  resources :dares, only: [:index,:create,:show]
+  resources :dares, only: [:index,:create,:show, :update]
 
   resources :dashboard, only: [:index, :show]
 
