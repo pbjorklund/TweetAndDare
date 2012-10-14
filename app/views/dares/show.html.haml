@@ -25,17 +25,8 @@
           = pretty_state(Dare::STATES[k])
     %div
       - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
-        %div
-          .span2
-            = form_for(@dare, :action => :update) do |f|
-              = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:completed]}'></hidden>"
-              %br
-              = f.submit "Completed", :class => "btn btn-success btn-large"
-          .span2
-            = form_for(@dare, :action => :update) do |f|
-              = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:failed]}'></hidden>"
-              %br
-              = f.submit "Failed", :class => "btn btn-danger btn-large"
+        = link_to "Completed", "/dares/#{@dare.id}?dare[state]=#{Dare::STATES[:completed]}", :class => "btn btn-success btn-large", :method => :put
+        = link_to "Failed", "/dares/#{@dare.id}?dare[state]=#{Dare::STATES[:failed]}", :class => "btn btn-danger btn-large", :method => :put
       - elsif @dare.state == Dare::STATES[:new]
         = form_for(@dare, :action => :update) do |f|
           = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
