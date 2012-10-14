@@ -1,14 +1,22 @@
 %h1
   Dashboard
-- dare = Dare.new(:text => "finish minecraft" )
-- dared_user = User.new(:nickname => "notch")
-- @dares = []
-- @dares.push dare
-%table.table.table-striped
-  %thead
-    %tr
-      %th My dares
-  %tbody
-    - @dares.each do |dare|
-      %tr
-        %td= render :partial => "dares/showsmall", :locals => { :dare => dare, :dared_user => dared_user }
+
+.row
+  .span6
+    %table.table.table-striped.span4
+      %thead
+        %tr
+          %th My dares
+      %tbody
+        - @dares.each do |dare|
+          %tr
+            %td= render :partial => "dares/showsmall", :locals => { :dare => dare }
+  .span6.pull-right
+    %table.table.table-striped
+      %thead
+        %tr
+          %th My daree's
+      %tbody
+        - @dares.each do |dare|
+          %tr
+            %td= render :partial => "dares/showsmall", :locals => { :dare => dare }  
