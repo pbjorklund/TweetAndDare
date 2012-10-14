@@ -19,3 +19,20 @@
         .row
           .form-actions
             = f.submit 'Dare'
+
+  .span8.offset2
+    %center
+      .row
+        - unless @recent_dares.empty?
+          %h1 Recent dares
+          %table
+            %tbody
+              - @recent_dares.each do |dare|
+                %tr
+                  %td
+                    = link_to image_tag( dare.owner.image), 'http://www.google.com'
+                    %a{ :href => "http://www.twitter.com/#{dare.owner.nickname}"}= dare.owner.nickname
+                    dared
+                    %a{ :href => "http://www.twitter.com/#{dare.dared_user.nickname}"}= dare.dared_user.nickname
+                    to
+                    = dare.text

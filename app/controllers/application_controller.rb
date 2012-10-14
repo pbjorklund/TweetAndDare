@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
       @dare = Dare.create(attrs)
 
       if current_user.oauth_hash
+        @dare.owner = current_user
+        @dare.save
         tweet_dare current_user, @dare.as_tweet
       end
 
