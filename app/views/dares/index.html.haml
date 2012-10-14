@@ -27,7 +27,7 @@
           %h1 Recent dares
           %table
             %tbody
-              - @recent_dares.each do |dare|
+              - @recent_dares.reverse.each do |dare|
                 %tr
                   %td
                     - if dare.owner.image
