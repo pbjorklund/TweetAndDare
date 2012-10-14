@@ -20,3 +20,15 @@
         .row
           .form-actions
             = f.submit 'Dare'
+
+  .span8.offset2
+    %center
+      .row
+        - unless @recent_dares.empty?
+          %h1 Recent dares
+          %table
+            %tbody
+              - @recent_dares.each do |dare|
+                %tr
+                  %td= dare.text
+                  %td= dare.dared_user.nickname
