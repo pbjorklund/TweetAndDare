@@ -15,10 +15,22 @@ describe Dare do
   end
 
   describe "#as_tweet" do
-    it { dare.as_tweet.should be_a(String) }
-    it { dare.as_tweet.should eq('I #dare #anyone to run Stockholm marathon http://some.url.com/dares/12345') }
-    it { dare.as_tweet.should match('#anyone') }
-    it { dare.as_tweet.should match('run Stockholm marathon') }
-    it { dare.as_tweet.should match(/http(s)?\:\/\/([a-z0-9\-\_]*)\.[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
+    context "when no dared user" do
+      before(:each) do
+        dare.dared_user = nil
+      end
+      it { dare.as_tweet.should be_a(String) }
+      it { dare.as_tweet.should eq('I #dare #anyone to run Stockholm marathon http://some.url.com/dares/12345') }
+      it { dare.as_tweet.should match('#anyone') }
+      it { dare.as_tweet.should match('run Stockholm marathon') }
+      it { dare.as_tweet.should match(/http(s)?\:\/\/([a-z0-9\-\_]*)\.[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
+    end
+
+    context "when a dared user" do
+      it { dare.as_tweet.should be_a(String) }
+      it { dare.as_tweet.should eq("I #dare @#{dare.dared_user.nickname} to run Stockholm marathon http://some.url.com/dares/12345") }
+      it { dare.as_tweet.should match('run Stockholm marathon') }
+      it { dare.as_tweet.should match(/http(s)?\:\/\/([a-z0-9\-\_]*)\.[a-z0-9\-\_]*\.[a-z0-9\-\_]{2,5}(\/(.*)?)?/i) }
+    end
   end
 end

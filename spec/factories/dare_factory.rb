@@ -5,11 +5,11 @@ FactoryGirl.define do
 
   factory :dare do
     text 'run Stockholm marathon'
-    owner { FactoryGirl.create(:user) }
+    dared_user { FactoryGirl.create(:user) }
   end
 
   factory :dare_params, class: User do
     text 'run Stockholm marathon'
-    owner({ nickname: FactoryGirl.generate(:dare_nickname) })
+    dared_user({ nickname: FactoryGirl.generate(:dare_nickname) })
   end
 end
