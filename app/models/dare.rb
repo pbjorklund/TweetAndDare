@@ -16,8 +16,7 @@ class Dare < ActiveRecord::Base
   STATES = { :default => 0, :new => 0, :accepted => 1, :completed => 2, :failed => 3}
 
   def self.get_most_popular
-    Dare.find(:all, :limit => 5, order: 'cached_votes_total ASC')
-
+    Dare.find(:all, order: 'cached_votes_total DESC', limit: 5)
   end
 
   # Public: Customized target setter
@@ -43,4 +42,9 @@ class Dare < ActiveRecord::Base
     tweet.concat text[0..((118 - tweet.length) - 1)]
     tweet.concat " http://tweetanddare.com/dares/#{id}"
   end
+
+  def votes_hash
+    { likes: self.likes.size, dislikes: self.dislikes.size }
+  end
+
 end
