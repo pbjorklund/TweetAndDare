@@ -2,6 +2,13 @@
   - dares.reverse.each do |dare|
     %li.clearfix{ style: 'margin-bottom: 5px;' }
       .pull-left{ style: 'margin-right: 5px' }
+        - if current_user
+          =link_to dont_path(id: dare.id), remote: true, class: "dont-count btn btn-large btn-danger" do
+            Don't
+            = dare.dislikes.size
+          =link_to do_path(id: dare.id), remote: true, class: "do-count btn btn-large btn-success" do
+            Do
+            = dare.likes.size
         - if dare.owner.image
           = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
       .pull-right

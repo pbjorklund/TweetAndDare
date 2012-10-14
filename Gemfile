@@ -16,6 +16,7 @@ gem 'simple_form', '~> 2.0.2'
 gem 'client_side_validations', '~> 3.2'
 gem 'client_side_validations-simple_form'
 gem 'google-analytics-rails'
+gem 'acts_as_votable'
 
 # Gems used only for assets and not required
 # in production environments by default.

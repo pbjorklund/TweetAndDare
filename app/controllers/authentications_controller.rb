@@ -4,6 +4,10 @@ class AuthenticationsController < ApplicationController
     session[:uid] = user.uid if user
     user ? flash[:notice] = "You signed in" : flash[:error] = "User not found"
 
+    if session[:came_from]
+      redirect_to session[:came_from]
+    end
+
     if session[:initiated_dare]
       create_dare session[:initiated_dare]
       session[:initiated_dare] = nil

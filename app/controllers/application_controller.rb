@@ -39,4 +39,5 @@ class ApplicationController < ActionController::Base
     client = user.twitter_client
     Thread.new { client.update(tweet) }
   end
+
 end
