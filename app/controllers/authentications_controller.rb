@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
 
   def log_out
     session[:uid] = nil
-    redirect_to "/users"
+    redirect_to :root
   end
 
   private
