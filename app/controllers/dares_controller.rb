@@ -34,7 +34,7 @@ class DaresController < ApplicationController
         else
           flash[:error] = "You cannot accept this dare!"
         end
-      elsif "@#{current_user.nickname}" == @dare.target or @dare.target.starts_with?("#")
+      elsif "@#{current_user.nickname.downcase}" == @dare.target.downcase or @dare.target.starts_with?("#")
         # can set state to accepted IF state is new
         if @dare.state == Dare::STATES[:accepted]
           @dare.dared_user = current_user

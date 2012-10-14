@@ -35,7 +35,10 @@
             = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
             %br
             - if current_user
-              - message = "If you are #{@dare.target}, click here to accept the dare!"
+              - if "@#{current_user.nickname.downcase}" == "#{@dare.target}" 
+                - message = "Accept the dare!"
+              - else
+                - message = "If you are #{@dare.target}, click here to accept the dare!"                
             - else
               - message = "If you are #{@dare.target}, login to accept the dare!"
             - if @dare.target.starts_with?("#")
