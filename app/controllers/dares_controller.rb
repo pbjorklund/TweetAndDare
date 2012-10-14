@@ -21,12 +21,17 @@ class DaresController < ApplicationController
     @dare = Dare.find(params[:id])
     @dare.state = params[:dare][:state]
 
-    if @dare.save
-      flash[:success] = "State updated"
+    if @dare.state == Dare::STATES[:accepted] && current_user && (@dare.target == "@#{current_user.nickname}" or @dare.target.starts_with?("#"))
+      if @dare.save
+        flash[:success] = "State updated"
+      else
+        flash[:error] = "Could not update state"
+      end
+      redirect_to :action => :show, :id => params[:id]
     else
-      flash[:error] = "Could not update state"
+      session[:redirect_url] = "/dares/#{params[:id]}"
+      redirect_to "/auth/twitter"
     end
-    redirect_to :action => :show, :id => params[:id]
   end
 
   private

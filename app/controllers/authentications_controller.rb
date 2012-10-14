@@ -7,6 +7,8 @@ class AuthenticationsController < ApplicationController
     if session[:initiated_dare]
       create_dare session[:initiated_dare]
       session[:initiated_dare] = nil
+    elsif session[:redirect_url]
+      redirect_to session[:redirect_url]
     else
       redirect_to root_path
     end

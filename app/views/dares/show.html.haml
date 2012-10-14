@@ -26,7 +26,6 @@
   .span12
     - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
       = form_for(@dare, :action => :update) do |f|
-        = f.label "Change state"
         = f.select :state, { :completed => Dare::STATES[:completed], :failed => Dare::STATES[:failed] }
         %br
         = f.submit "Update", :class => "btn"
@@ -34,7 +33,10 @@
       = form_for(@dare, :action => :update) do |f|
         = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
         %br
-        = f.submit "Accept", :class => "btn"
+        - message = "If you are #{@dare.target} click here to accept the dare!"
+        - if @dare.target.starts_with?("#")
+          - message = "Accept the dare!"
+        = f.submit message, :class => "btn btn-success btn-large"
 
 %center
   = render "disqus/disqus"
