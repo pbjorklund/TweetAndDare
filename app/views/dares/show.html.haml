@@ -12,8 +12,9 @@
     = twitter_link @dare.target
     to
     = @dare.text
+
 .row
-  .span12
+  .span6
     %h2
       Current state
       %br
@@ -22,21 +23,34 @@
           = pretty_state(Dare::STATES[k], true)
         - else
           = pretty_state(Dare::STATES[k])
-.row
-  .span12
-    - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
-      = form_for(@dare, :action => :update) do |f|
-        = f.select :state, { :completed => Dare::STATES[:completed], :failed => Dare::STATES[:failed] }
-        %br
-        = f.submit "Update", :class => "btn"
-    - elsif @dare.state == Dare::STATES[:new]
-      = form_for(@dare, :action => :update) do |f|
-        = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
-        %br
-        - message = "If you are #{@dare.target} click here to accept the dare!"
-        - if @dare.target.starts_with?("#")
-          - message = "Accept the dare!"
-        = f.submit message, :class => "btn btn-success btn-large"
-
+    %div
+      - if current_user == @dare.owner && @dare.state == Dare::STATES[:accepted]
+        = form_for(@dare, :action => :update) do |f|
+          = f.select :state, { :completed => Dare::STATES[:completed], :failed => Dare::STATES[:failed] }
+          %br
+          = f.submit "Update", :class => "btn"
+      - elsif @dare.state == Dare::STATES[:new]
+        = form_for(@dare, :action => :update) do |f|
+          = raw "<input type='hidden' name='dare[state]' value='#{Dare::STATES[:accepted]}'></hidden>"
+          %br
+          - message = "If you are #{@dare.target} click here to accept the dare!"
+          - if @dare.target.starts_with?("#")
+            - message = "Accept the dare!"
+          = f.submit message, :class => "btn btn-success btn-large"
+  .span6.pull-right
+    %h2
+      - if @dare.dared_user
+        - if @dare.dared_user.image
+          = link_to image_tag(@dare.dared_user.image), "http://www.twitter.com/#{@dare.dared_user.image}"
+        = twitter_link @dare.dared_user.nickname
+        - if @dare.state == Dare::STATES[:completed]
+          succeded to
+        - elsif @dare.state == Dare::STATES[:failed]
+          failed to
+        - else
+          is going to
+        = @dare.text
+      - else
+        No one has accepted this dare yet
 %center
   = render "disqus/disqus"
