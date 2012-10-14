@@ -1,10 +1,16 @@
+.page-header
+  %h3
+    .pull-left{ style: 'margin-right: 10px;'}
+      = image_tag @dare.owner.image
+    - if @dare.dared_user
+      .pull-right{ style: 'margin-left: 10px;'}
+        = image_tag @dare.dared_user.image
+
+    = twitter_link @dare.owner.nickname
+    dared
+    = twitter_link @dare.target
+    to
+    = @dare.text
 .row
-  .page-header
-    %h1
-      = twitter_link @dare.owner.nickname
-      dared
-      = twitter_link @dare.dared_user.nickname
-      to
-      = @dare.text
-%div
-  = pretty_state(@dare.state)
+  .span12
+    = pretty_state(@dare.state)
