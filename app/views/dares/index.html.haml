@@ -20,20 +20,18 @@
           .form-actions
             = f.submit 'Dare'
 
-  .span8.offset2
-    %center
-      .row
-        - unless @recent_dares.empty?
-          %h1 Recent dares
-          %table
-            %tbody
-              - @recent_dares.reverse.each do |dare|
-                %tr
-                  %td
-                    - if dare.owner.image
-                      = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
-                    = twitter_link dare.owner.nickname
-                    dared
-                    = twitter_link dare.target
-                    to
-                    = dare.text
+        .row
+          - unless @recent_dares.empty?
+            %h1 Recent dares
+            %table
+              %tbody
+                - @recent_dares.reverse.each do |dare|
+                  %tr
+                    %td
+                      - if dare.owner.image
+                        = link_to image_tag(dare.owner.image), "http://www.twitter.com/#{dare.owner.nickname}"
+                      = twitter_link dare.owner.nickname
+                      dared
+                      = twitter_link dare.target
+                      to
+                      = dare.text
