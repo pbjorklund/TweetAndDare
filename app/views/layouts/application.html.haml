@@ -7,7 +7,8 @@
     = csrf_meta_tags
 
     // GOOGLE
-    //= analytics_init :local => Rails.env.development?
+    - unless Rails.env.development?
+      = analytics_init :local => Rails.env.development?
 
   %body
     %div.container
