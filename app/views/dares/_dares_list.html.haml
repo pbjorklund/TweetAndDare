@@ -8,10 +8,10 @@
         .btn-group
           - if current_user
             =link_to dont_path(id: dare.id), remote: true, class: "vote-dont btn btn-small btn-danger" do
-              %i.icon-chevron-down.icon-white
+              %i.icon-thumbs-down.icon-white
               %span.votes-count= dare.dislikes.size
             =link_to do_path(id: dare.id), remote: true, class: "vote-do btn btn-small btn-success" do
-              %i.icon-chevron-up.icon-white
+              %i.icon-thumbs-up.icon-white
               %span.votes-count= dare.likes.size
           = link_to dare, class: 'btn btn-small' do
             %strong= "View"

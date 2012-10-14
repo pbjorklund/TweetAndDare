@@ -3,4 +3,3 @@ $ ->
     votesHash = $.parseJSON(resp.responseText)
     $(@).parent().find('.vote-do span.votes-count').text(votesHash.likes)
     $(@).parent().find('.vote-dont span.votes-count').text(votesHash.dislikes)
-
